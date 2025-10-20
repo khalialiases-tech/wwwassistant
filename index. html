@@ -1,1 +1,39 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التقويم الميلادي</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calendar-wrapper">
+            <div class="header">
+                <h1>التقويم الميلادي</h1>
+                <div class="controls">
+                    <button id="prevBtn" class="btn">←</button>
+                    <span id="monthYear" class="month-year"></span>
+                    <button id="nextBtn" class="btn">→</button>
+                </div>
+            </div>
+            
+            <div class="weekdays">
+                <div class="weekday">ح</div>
+                <div class="weekday">ن</div>
+                <div class="weekday">ث</div>
+                <div class="weekday">ر</div>
+                <div class="weekday">خ</div>
+                <div class="weekday">ج</div>
+                <div class="weekday">س</div>
+            </div>
+            
+            <div id="calendar" class="calendar-days"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
