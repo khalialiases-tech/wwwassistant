@@ -1,0 +1,406 @@
+/* ===== متغيرات CSS ===== */
+:root {
+    --neon-blue: #00d4ff;
+    --neon-pink: #ff006e;
+    --neon-purple: #b537f2;
+    --neon-green: #39ff14;
+    --dark-bg: #0a0e27;
+    --card-bg: #1a1f3a;
+    --text-light: #e0e0e0;
+    --text-white: #ffffff;
+}
+
+/* ===== إعدادات عامة ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0d0f2d 100%);
+    color: var(--text-light);
+    line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* خلفية نيون متحركة */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 0, 110, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(181, 55, 242, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ===== قسم المقدمة (Hero Section) ===== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 70% 70%, rgba(255, 0, 110, 0.15) 0%, transparent 40%);
+    animation: float 20s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(30px, -30px) rotate(180deg); }
+}
+
+.hero-content {
+    z-index: 1;
+    max-width: 800px;
+}
+
+.greeting {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--neon-blue);
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.8),
+                 0 0 40px rgba(0, 212, 255, 0.4);
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 40px rgba(0, 212, 255, 0.4); }
+    50% { text-shadow: 0 0 30px rgba(0, 212, 255, 1), 0 0 60px rgba(0, 212, 255, 0.6); }
+}
+
+.main-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--neon-pink);
+    text-shadow: 0 0 20px rgba(255, 0, 110, 0.8),
+                 0 0 40px rgba(255, 0, 110, 0.4);
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: var(--neon-green);
+    text-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
+}
+
+/* ===== قسم الخدمات (Services Section) ===== */
+.services {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 60px;
+    color: var(--neon-blue);
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    background: rgba(26, 31, 58, 0.8);
+    border: 2px solid var(--neon-blue);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.service-card:hover {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 30px rgba(255, 0, 110, 0.6),
+                inset 0 0 20px rgba(255, 0, 110, 0.1);
+    transform: translateY(-10px);
+}
+
+.service-card:nth-child(2):hover {
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 30px rgba(181, 55, 242, 0.6),
+                inset 0 0 20px rgba(181, 55, 242, 0.1);
+}
+
+.service-card:nth-child(3):hover {
+    border-color: var(--neon-green);
+    box-shadow: 0 0 30px rgba(57, 255, 20, 0.6),
+                inset 0 0 20px rgba(57, 255, 20, 0.1);
+}
+
+.service-icon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    display: inline-block;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.service-name {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: var(--text-white);
+}
+
+.service-desc {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* ===== قسم الفخر (Pride Section) ===== */
+.pride {
+    padding: 60px 20px;
+    text-align: center;
+    background: rgba(181, 55, 242, 0.05);
+    border-top: 2px solid var(--neon-purple);
+    border-bottom: 2px solid var(--neon-purple);
+}
+
+.pride-text {
+    font-size: 1.8rem;
+    color: var(--neon-purple);
+    text-shadow: 0 0 20px rgba(181, 55, 242, 0.6);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ===== قسم التواصل (Contact Section) ===== */
+.contact {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.contact-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: 2px solid;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.whatsapp-btn {
+    color: #25d366;
+    border-color: #25d366;
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(37, 211, 102, 0.2);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.whatsapp-btn:hover {
+    color: #ffffff;
+    border-color: #25d366;
+    box-shadow: 0 0 40px rgba(37, 211, 102, 0.8),
+                inset 0 0 20px rgba(37, 211, 102, 0.3);
+    transform: translateY(-3px);
+}
+
+.whatsapp-btn:hover::before {
+    left: 0;
+}
+
+.telegram-btn {
+    color: var(--neon-blue);
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.telegram-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 212, 255, 0.2);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.telegram-btn:hover {
+    color: #ffffff;
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.8),
+                inset 0 0 20px rgba(0, 212, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+.telegram-btn:hover::before {
+    left: 0;
+}
+
+.btn-icon {
+    font-size: 1.3rem;
+}
+
+.btn-text {
+    display: inline-block;
+}
+
+/* ===== Footer ===== */
+.footer {
+    padding: 30px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(0, 212, 255, 0.3);
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* ===== استجابة الشاشات الصغيرة ===== */
+@media (max-width: 768px) {
+    .greeting {
+        font-size: 1.8rem;
+    }
+
+    .main-title {
+        font-size: 1.4rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+        margin-bottom: 40px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .service-icon {
+        font-size: 2.5rem;
+    }
+
+    .service-name {
+        font-size: 1.1rem;
+    }
+
+    .pride-text {
+        font-size: 1.3rem;
+    }
+
+    .contact-buttons {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .contact-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        min-height: 80vh;
+        padding: 20px;
+    }
+
+    .greeting {
+        font-size: 1.5rem;
+    }
+
+    .main-title {
+        font-size: 1.2rem;
+    }
+
+    .services {
+        padding: 40px 15px;
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    .contact-btn {
+        padding: 15px 30px;
+        font-size: 0.95rem;
+    }
+}
+
